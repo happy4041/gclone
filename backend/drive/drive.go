@@ -767,6 +767,7 @@ func (f *Fs) shouldRetry(ctx context.Context, err error) (bool, error) {
 		// update download
 		if len(gerr.Errors) > 0 {
 			reason := gerr.Errors[0].Reason
+			// update
 			if reason == "rateLimitExceeded" || reason == "userRateLimitExceeded" || reason == "downloadQuotaExceeded" {
 				// If ServiceAccountFilePath exists, call changeSvc and try again
 				if f.opt.ServiceAccountFilePath != "" {
